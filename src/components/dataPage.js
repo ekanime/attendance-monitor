@@ -1,19 +1,42 @@
 import React, {Component} from 'react';
 import Box from './box'
+import {Link} from 'react-router-dom';
+import Particles from 'react-particles-js';
+
+const particlesOptions = {
+    particles: {
+      number: {
+        value: 60,
+        density: {
+          enable: true,
+          value_area: 800
+        }
+      }
+    }
+  }
 
 
-class DataPage extends Component {
+class DataPage extends React.Component{
     render(){
         return(
-        <div className="pa4">
-            <h1 className="f2 fw6 ph0 mh0 tc">ATTENDANCE MONITOR</h1>
-            <Box />
-           <div> <label inline className ="tr">MOST PUNCTUAL</label><br/>
-            <label className ="tl">HIGHEST ATTENDANCE</label> </div>
-            <button className="f6 grow no-underline br-pill ba bw2 ph3 pv2 mb2 dib black"> UPLOAD </button>
-            <button className="f6 grow no-underline br-pill ba bw2 ph3 pv2 mb2 dib black"> DOWNLOAD REPORT</button>
-            <button className="f6 grow no-underline br-pill ba bw2 ph3 pv2 mb2 dib black"> END</button>
-        </div>
+            <div>
+                <Particles className="particles"
+                        params={particlesOptions}/> 
+                <h1 className="tc header-label">ATTENDANCE MONITOR</h1>
+                <Box />
+            <div> <label inline className ="tr ph7 rank-label-punctual">MOST PUNCTUAL</label>
+                <label className ="tl ph7 rank-label-attendance">HIGHEST ATTENDANCE</label> </div>
+                <div className="enrollPageButtonsDiv pv6">
+                    <button className="enrollPageButtons ph4 pv3 input-reset ba b--black bg-transparent grow pointer f6 dib">UPLOAD</button>
+                    <button className="enrollPageButtons ph3 pv3 input-reset ba b--black bg-transparent grow pointer f6 dib"> SHOW REPORT</button>
+                    <Link className ="link" to='/enroll'>
+                    <button className="enrollPageButtons ph5 pv3 input-reset ba b--black bg-transparent grow pointer f6 dib">
+                        END 
+                    </button>
+                    </Link>
+                </div>  
+            
+            </div>
         )
     }
 }
